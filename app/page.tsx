@@ -60,57 +60,93 @@ const projects = [
   },
   {
     number: "03",
-    title: "AI Content Generation",
-    description:
-      "Final-year project exploring how artificial intelligence can streamline and automate content creation workflows.",
-    tags: ["AI", "Automation", "FYP", "Research"],
-    href: "mailto:usmanramzan1532005@gmail.com?subject=AI%20Content%20Generation%20Project",
-    linkLabel: "Ask about project",
-    preview: "ai",
-  },
-  {
-    number: "04",
     title: "JavaScript Music Player",
     description:
       "A responsive browser music player with play, pause, next and previous controls, a live progress bar, volume control, playlist and autoplay.",
     tags: ["HTML5", "CSS3", "JavaScript", "Audio API"],
-    href: "mailto:usmanramzan1532005@gmail.com?subject=JavaScript%20Music%20Player%20Project",
-    linkLabel: "Ask for demo",
+    href: "https://usman325-ops.github.io/javascript-music-player/",
+    secondaryHref: "https://github.com/Usman325-ops/javascript-music-player",
+    secondaryLabel: "View repository",
+    linkLabel: "Live demo",
     preview: "music",
   },
   {
-    number: "05",
+    number: "04",
     title: "Interactive Image Gallery",
     description:
       "A responsive image gallery featuring category filters, smooth hover effects, a lightbox view and next/previous image navigation.",
     tags: ["HTML5", "CSS Grid", "JavaScript", "Lightbox"],
-    href: "mailto:usmanramzan1532005@gmail.com?subject=Interactive%20Image%20Gallery%20Project",
-    linkLabel: "Ask for demo",
+    href: "https://lenscape-gallery.usmanramzan1532005.chatgpt.site",
+    linkLabel: "Live demo",
     preview: "gallery",
   },
   {
-    number: "06",
+    number: "05",
     title: "Prism Break Game",
     description:
       "A colourful Unity 2D brick-breaker game with animated levels, sound effects, a lives system and dedicated win and game-over screens.",
     tags: ["Unity 2D", "C#", "Game Logic", "Animations"],
-    href: "mailto:usmanramzan1532005@gmail.com?subject=Prism%20Break%20Game%20Project",
-    linkLabel: "Ask for demo",
+    href: "https://github.com/Usman325-ops/Prism-Break",
+    linkLabel: "View repository",
     preview: "prism",
   },
   {
-    number: "07",
+    number: "06",
     title: "Neural Chat App",
     description:
       "A real-time messaging application with a responsive chat interface, user authentication, live communication and message persistence.",
     tags: ["React.js", "Socket.io", "Node.js", "MongoDB"],
-    href: "mailto:usmanramzan1532005@gmail.com?subject=Neural%20Chat%20App%20Project",
-    linkLabel: "Ask for demo",
+    href: "https://github.com/Usman325-ops/Neural-Chat",
+    linkLabel: "View repository",
     preview: "chat",
+  },
+  {
+    number: "07",
+    title: "NovaFlow Landing Page",
+    description:
+      "A polished and responsive productivity landing page with a sticky navigation bar, strong hero section, feature highlights and mobile-friendly layouts.",
+    tags: ["HTML5", "CSS3", "Responsive", "Landing Page"],
+    href: "https://usman325-ops.github.io/novaflow-landing/",
+    secondaryHref: "https://github.com/Usman325-ops/novaflow-landing",
+    linkLabel: "Live demo",
+    secondaryLabel: "View repository",
+    preview: "novaflow",
+  },
+  {
+    number: "08",
+    title: "Temperature Converter",
+    description:
+      "An interactive temperature converter for Celsius, Fahrenheit and Kelvin with real-time validation and absolute-zero edge-case handling.",
+    tags: ["HTML5", "CSS3", "JavaScript", "Validation"],
+    href: "https://usman325-ops.github.io/temperature-converter/",
+    secondaryHref: "https://github.com/Usman325-ops/temperature-converter",
+    linkLabel: "Live demo",
+    secondaryLabel: "View repository",
+    preview: "temperature",
   },
 ];
 
 function ProjectPreview({ type }: { type: string }) {
+  if (type === "novaflow") {
+    return (
+      <div className="project-visual novaflow-preview" aria-hidden="true">
+        <div className="nova-nav"><strong>NOVAFLOW</strong><span>FEATURES&nbsp;&nbsp; ABOUT&nbsp;&nbsp; START</span></div>
+        <div className="nova-copy"><small>FOCUS. FLOW. FINISH.</small><b>Make space for<br />your best work.</b><i>START FREE →</i></div>
+        <div className="nova-orb"><span /></div>
+      </div>
+    );
+  }
+
+  if (type === "temperature") {
+    return (
+      <div className="project-visual temperature-preview" aria-hidden="true">
+        <div className="temp-top"><span>°</span><strong>TEMPERATURE<br />CONVERTER</strong></div>
+        <div className="temp-input"><b>24</b><span>CELSIUS&nbsp; °C</span></div>
+        <div className="temp-results"><div><b>75.2°</b><span>FAHRENHEIT</span></div><div><b>297.15</b><span>KELVIN</span></div></div>
+      </div>
+    );
+  }
+
   if (type === "dashboard") {
     return (
       <div className="project-visual dashboard-preview" aria-hidden="true">
@@ -480,12 +516,16 @@ export default function Home() {
                   {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
                 </div>
                 <div className="project-links">
-                  <a href={project.href} target={project.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
-                    {project.linkLabel} <ArrowUpRight size={16} />
-                  </a>
+                  {"available" in project && project.available === false ? (
+                    <span className="project-link-disabled">{project.linkLabel}</span>
+                  ) : (
+                    <a href={project.href} target="_blank" rel="noreferrer">
+                      {project.linkLabel} <ArrowUpRight size={16} />
+                    </a>
+                  )}
                   {project.secondaryHref && (
                     <a href={project.secondaryHref} target="_blank" rel="noreferrer">
-                      Backend code <ArrowUpRight size={16} />
+                      {"secondaryLabel" in project ? project.secondaryLabel : "Backend code"} <ArrowUpRight size={16} />
                     </a>
                   )}
                 </div>
