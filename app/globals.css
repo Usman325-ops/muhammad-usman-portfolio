@@ -22,6 +22,41 @@
   --radius: 0.75rem;
 }
 
+/* NovaFlow and Temperature Converter project previews */
+.novaflow-preview,
+.temperature-preview {
+  position: relative;
+  overflow: hidden;
+  padding: 26px;
+}
+
+.novaflow-preview {
+  color: #10130d;
+  background: linear-gradient(135deg, #dfff74 0%, #baf25b 48%, #f4f4e9 48%);
+}
+
+.nova-nav { display: flex; justify-content: space-between; font-size: 10px; letter-spacing: .12em; }
+.nova-copy { position: absolute; left: 28px; bottom: 30px; display: grid; gap: 10px; z-index: 2; }
+.nova-copy small { font-size: 9px; letter-spacing: .2em; }
+.nova-copy b { font-size: clamp(22px, 3vw, 38px); line-height: .95; letter-spacing: -.05em; }
+.nova-copy i { width: fit-content; padding: 8px 12px; color: #dfff74; background: #10130d; font-size: 9px; font-style: normal; }
+.nova-orb { position: absolute; width: 165px; height: 165px; right: -25px; bottom: -25px; border: 1px solid #10130d; border-radius: 50%; }
+.nova-orb span { position: absolute; inset: 28px; border: 1px solid #10130d; border-radius: 50%; }
+
+.temperature-preview {
+  color: #f7f8ef;
+  background: radial-gradient(circle at 80% 15%, #dfff74 0 8%, transparent 9%), linear-gradient(145deg, #1c2515, #090b08);
+}
+
+.temp-top { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: .12em; }
+.temp-top > span { display: grid; width: 34px; height: 34px; place-items: center; color: #10130d; background: #dfff74; border-radius: 50%; font-size: 24px; }
+.temp-input { margin-top: 32px; padding: 16px 18px; border: 1px solid rgba(223,255,116,.35); display: flex; justify-content: space-between; align-items: end; }
+.temp-input b { color: #dfff74; font-size: 42px; line-height: 1; }
+.temp-input span, .temp-results span { font-size: 8px; letter-spacing: .15em; opacity: .65; }
+.temp-results { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+.temp-results div { display: grid; gap: 5px; padding: 12px; background: rgba(255,255,255,.06); }
+.temp-results b { font-size: 16px; }
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -647,6 +682,15 @@ a {
 .project-links a:hover {
   gap: 13px;
   color: #4b651f;
+}
+
+.project-link-disabled {
+  display: inline-flex;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed currentColor;
+  font-size: 0.78rem;
+  font-weight: 700;
+  opacity: 0.58;
 }
 
 .project-visual {
