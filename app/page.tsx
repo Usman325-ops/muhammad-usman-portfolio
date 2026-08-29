@@ -96,8 +96,10 @@ const projects = [
     description:
       "A real-time messaging application with a responsive chat interface, user authentication, live communication and message persistence.",
     tags: ["React.js", "Socket.io", "Node.js", "MongoDB"],
-    href: "https://github.com/Usman325-ops/Neural-Chat",
-    linkLabel: "View repository",
+    href: "https://usman-neural-chat.vercel.app",
+    secondaryHref: "https://github.com/Usman325-ops/Neural-Chat",
+    linkLabel: "Live demo",
+    secondaryLabel: "View repository",
     preview: "chat",
   },
   {
